@@ -71,8 +71,12 @@ async function getRepoInfo (repoName) {
     displayRepoInfo(repoInfo, languages);
 };
 
-async function displayRepoInfo (repoInfo, languages) {
-    repoInfo.innerHTML = "";
+function displayRepoInfo (repoInfo, languages) {
+    backToGalleryButton.classList.remove("hide");
+    repoInfoElement.innerHTML = "";
+    repoInfoElement.classList.remove("hide");
+    repoInfoSection.classList.add("hide");
+    
     const div = document.createElement("div");
     div.innerHTML = 
         `<h3>Name: ${repoInfo.name}</h3>
@@ -81,9 +85,6 @@ async function displayRepoInfo (repoInfo, languages) {
         <p>Languages: ${languages.join(", ")}</p>
         <a class="visit" href="${repoInfo.html_url}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`;
     repoInfoElement.append(div);
-    repoInfoElement.classList.remove("hide");
-    repoInfoSection.classList.add("hide");
-    backToGalleryButton.classList.remove("hide");
 };
 
 backToGalleryButton.addEventListener ("click", function () {
